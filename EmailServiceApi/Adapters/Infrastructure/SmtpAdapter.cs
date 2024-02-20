@@ -14,7 +14,7 @@ namespace EmailServiceApi.Infrastructure
                 MailMessage emailMessage = new(from, to, subject, body);
 
                 SmtpClient client = new("smtp.gmail.com", 587){ EnableSsl = true };
-                NetworkCredential credential = new("myEmail", "myAppPassword");
+                NetworkCredential credential = new("myEmail", "myPassword");
                 client.Credentials = credential;
                 client.UseDefaultCredentials = false;
 
