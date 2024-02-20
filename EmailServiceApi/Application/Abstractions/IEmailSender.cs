@@ -1,9 +1,7 @@
-using EmailServiceApi.Application.Abstractions;
-
-namespace EmailServiceApi.Core.Abstractions
+namespace EmailServiceApi.Application.Abstractions
 {
     public interface IEmailSender
     {
-        bool SendEmail(IEmail email);
+        bool SendEmail(string from, string to, string subject, string body);
     }
 }

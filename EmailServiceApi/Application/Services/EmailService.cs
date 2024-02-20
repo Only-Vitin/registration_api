@@ -1,6 +1,4 @@
-using EmailServiceApi.Core.Abstractions;
 using EmailServiceApi.Application.Abstractions;
-using EmailServiceApi.Aplication.Entities;
 
 namespace EmailServiceApi.Application.Services
 {
@@ -13,9 +11,13 @@ namespace EmailServiceApi.Application.Services
             _emailSender = emailSender;
         }
 
-        public bool SendEmailService(IEmail email)
+        public string SendEmailService(string from, string to, string subject, string body)
         {
-            return _emailSender.SendEmail(email);
+            if(_emailSender.SendEmail(from, to, subject, body))
+            {
+                return "Email enviado com sucesso!";
+            }
+            return "Aconteceu um erro, email não enviado";
         }
     }
 }

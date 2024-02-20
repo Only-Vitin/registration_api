@@ -2,13 +2,11 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using EmailServiceApi.Core.Abstractions;
 using EmailServiceApi.Infrastructure;
+using Microsoft.Extensions.Configuration;
 using EmailServiceApi.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 using EmailServiceApi.Application.Abstractions;
-using EmailServiceApi.Aplication.Entities;
 
 namespace EmailServiceApi
 {
@@ -24,7 +22,6 @@ namespace EmailServiceApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IEmailSender, SmtpAdapter>();
-            services.AddScoped<IEmail, Email>();
 
             services.AddScoped<EmailService>();
 
