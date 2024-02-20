@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZNs68EXU55aF8+bhkpz6cGNshQngYr2s04rWJO341hsmF+6EXJMW42dGFwVPtkacMcT/VtrJQIw4FDnWT1wWdg==",
+  "dgSpecHash": "Zz3KWIy/i4T8IKKEjNN8EOPQhCY2s5350dM2MhHASr5RtJjx4F308bpL8i2XbpuuX7VmoX4vHbRTLR1VdDe7PQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\vitor.santos\\Documents\\registration_with_email_sending\\EmailServiceApi\\EmailServiceApi.csproj",
   "expectedPackageFiles": [

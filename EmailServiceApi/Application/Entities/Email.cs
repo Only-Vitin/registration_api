@@ -1,9 +1,19 @@
+using EmailServiceApi.Application.Abstractions;
+
 namespace EmailServiceApi.Aplication.Entities
 {
-    public class Email
+    public class Email : IEmail
     {
-        public string Sender { get; set; }
-        public string  Recipient { get; set; }
+        public Email(string senderEmail, string recipientEmail, string title, string message)
+        {
+            SenderEmail = senderEmail;
+            RecipientEmail = recipientEmail;
+            Title = title;
+            Message = message;
+        }
+
+        public string SenderEmail { get; set; }
+        public string  RecipientEmail { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
     }

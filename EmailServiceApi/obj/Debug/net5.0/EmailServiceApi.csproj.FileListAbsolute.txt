@@ -20,14 +20,10 @@ C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\EmailServiceApi.RazorTargetAssemblyInfo.cache
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\scopedcss\bundle\EmailServiceApi.styles.css
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\EmailServiceApi.StaticWebAssets.Manifest.cache
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\EmailServiceApi.StaticWebAssets.Pack.cache
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\msbuild.EmailServiceApi.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\msbuild.build.EmailServiceApi.props
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.EmailServiceApi.props
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.EmailServiceApi.props
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\EmailSer.25F00F87.Up2Date
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\EmailServiceApi.dll
-C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\refint\EmailServiceApi.dll
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\EmailServiceApi.pdb
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\EmailServiceApi.genruntimeconfig.cache
 C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\ref\EmailServiceApi.dll
+C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\bin\Debug\net5.0\ref\EmailServiceApi.dll
+C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\staticwebassets\EmailServiceApi.StaticWebAssets.xml
+C:\Users\vitor.santos\Documents\registration_with_email_sending\EmailServiceApi\obj\Debug\net5.0\EmailServiceApi.csproj.CopyComplete

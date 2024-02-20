@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using EmailServiceApi.Core.Abstractions;
+using EmailServiceApi.Infrastructure;
+using EmailServiceApi.Application.Services;
+using EmailServiceApi.Application.Abstractions;
+using EmailServiceApi.Aplication.Entities;
 
 namespace EmailServiceApi
 {
@@ -18,6 +23,10 @@ namespace EmailServiceApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IEmailSender, SmtpAdapter>();
+            services.AddScoped<IEmail, Email>();
+
+            services.AddScoped<EmailService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
