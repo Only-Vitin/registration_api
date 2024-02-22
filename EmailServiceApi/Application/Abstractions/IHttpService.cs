@@ -5,6 +5,6 @@ namespace EmailServiceApi.Application.Abstractions
 {
     public interface IHttpService
     {
-        IActionResult RetrieveEmailInfos(EmailDto emailDto);
+        IActionResult PostEmailInfos(EmailDto emailDto);
     }
 }

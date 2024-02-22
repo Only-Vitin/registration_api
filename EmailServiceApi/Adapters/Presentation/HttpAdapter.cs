@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using EmailServiceApi.Application.Services;
 using EmailServiceApi.Application.Abstractions;
 using EmailServiceApi.Dto;
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace EmailServiceApi.Adapters.Presentation
 {
@@ -17,10 +19,18 @@ namespace EmailServiceApi.Adapters.Presentation
         }
 
         [HttpPost]
-        public IActionResult RetrieveEmailInfos([FromBody] EmailDto email)
+        public IActionResult PostEmailInfos([FromBody] EmailDto email)
         {
-            _emailService.SendEmailService(email.From, email.To, email.Subject, email.Body);
-            return Ok();
+            if(!_emailService.ValidateEmail(email.From)) 
+                return BadRequest(new ResponseMessageDto("Email do remetente está incorreto: " + email.From));
+
+            if(!_emailService.ValidateEmail(email.To)) 
+                return BadRequest(new ResponseMessageDto("Email do destinatário está incorreto: " + email.To));
+
+            if(!_emailService.SendEmailService(email.From, email.To, email.Subject, email.Body))
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseMessageDto("Erro ao enviar o email"));
+
+            return Ok(new ResponseMessageDto("Email enviado com sucesso"));
         }
     }
 }

@@ -41,12 +41,9 @@ namespace EmailServiceApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EmailServiceApi v1"));
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseHttpsRedirection();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

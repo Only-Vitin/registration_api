@@ -1,3 +1,5 @@
+using System;
+using System.Text.RegularExpressions;
 using EmailServiceApi.Application.Abstractions;
 
 namespace EmailServiceApi.Application.Services
@@ -11,13 +13,25 @@ namespace EmailServiceApi.Application.Services
             _emailSender = emailSender;
         }
 
-        public string SendEmailService(string from, string to, string subject, string body)
+        public bool SendEmailService(string from, string to, string subject, string body)
         {
-            if(_emailSender.SendEmail(from, to, subject, body))
+
+            try
             {
-                return "Email enviado com sucesso!";
+                _emailSender.SendEmail(from, to, subject, body);
+                return true;
             }
-            return "Aconteceu um erro, email não enviado";
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool ValidateEmail(string email)
+        {
+            Regex emailRegex = new(@"^([\w\.\-]{1,63})@([\p{L}\d\-]+)((\.[\w\-]+)+)$");
+            return emailRegex.IsMatch(email);
         }
     }
 }
