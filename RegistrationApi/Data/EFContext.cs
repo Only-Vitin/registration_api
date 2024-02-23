@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 
 using RegistrationApi.Entities;
+using RegistrationApi.Entities.Users;
 
 namespace RegistrationApi.Data
 {
@@ -27,4 +28,4 @@ namespace RegistrationApi.Data
             base.OnModelCreating(modelBuilder);
         }
     }
-}
+} 

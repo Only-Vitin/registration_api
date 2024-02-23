@@ -4,4 +4,4 @@ namespace EmailServiceApi.Application.Abstractions
     {
         void SendEmail(string from, string to, string subject, string body);
     }
-}
+} 
