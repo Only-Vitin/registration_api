@@ -15,7 +15,6 @@ namespace EmailServiceApi.Application.Services
 
         public bool SendEmailService(string from, string to, string subject, string body)
         {
-
             try
             {
                 _emailSender.SendEmail(from, to, subject, body);

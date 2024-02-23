@@ -21,10 +21,10 @@ namespace EmailServiceApi.Adapters.Presentation
         [HttpPost]
         public IActionResult PostEmailInfos([FromBody] EmailDto email)
         {
-            if(!_emailService.ValidateEmail(email.From)) 
+            if(!_emailService.ValidateEmail(email.From))
                 return BadRequest(new ResponseMessageDto("Email do remetente está incorreto: " + email.From));
 
-            if(!_emailService.ValidateEmail(email.To)) 
+            if(!_emailService.ValidateEmail(email.To))
                 return BadRequest(new ResponseMessageDto("Email do destinatário está incorreto: " + email.To));
 
             if(!_emailService.SendEmailService(email.From, email.To, email.Subject, email.Body))
