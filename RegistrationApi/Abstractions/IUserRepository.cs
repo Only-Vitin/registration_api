@@ -1,5 +1,4 @@
-using RegistrationApi.Dto;
-using RegistrationApi.Entities;
+using RegistrationApi.Entities.Users;
 using System.Collections.Generic;
 
 namespace RegistrationApi.Abstractions

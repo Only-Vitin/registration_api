@@ -1,7 +1,9 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RegistrationApi.Entities.Users
 {
+    [Table("Customer")]
     public class Customer : User
     {
         public DateTime RegistrationDate { get; set; }

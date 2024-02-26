@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace RegistrationApi.Entities.Products
 {
+    [Table("Product")]
     public abstract class Product
     {
         public int Id { get; set; }

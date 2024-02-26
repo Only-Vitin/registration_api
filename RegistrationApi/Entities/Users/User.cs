@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RegistrationApi.Entities.Users
 {
+    [Table("User")]
     public abstract class User
     {
-        protected int Id { get; set; }
-        protected string Name { get; private set; }
-        protected DateTime BirthDate { get; set; }
-        protected string Gender { get; set; }
-        protected string CPF { get; set; }
-        protected string Email { get; private set; }
-        protected string Password { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; private set; }
+        public DateTime BirthDate { get; set; }
+        public string Gender { get; set; }
+        public string CPF { get; set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
 
-        protected ICollection<Token> Tokens { get; set; }
+        public ICollection<Token> Tokens { get; set; }
     }
 }
