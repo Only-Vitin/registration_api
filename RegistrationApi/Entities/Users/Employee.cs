@@ -15,4 +15,3 @@ namespace RegistrationApi.Entities.Users
         public TimeSpan OvertimeWorked { get; set; }
     }
 }
-
