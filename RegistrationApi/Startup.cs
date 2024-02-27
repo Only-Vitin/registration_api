@@ -1,9 +1,12 @@
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+using RegistrationApi.Data;
 
 namespace RegistrationApi
 {
@@ -18,11 +21,14 @@ namespace RegistrationApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EFContext>(opts => 
+                opts.UseMySql(Configuration.GetConnectionString("MySQLConnection"), 
+                ServerVersion.AutoDetect(Configuration.GetConnectionString("MySQLConnection"))));
+
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RegistrationApi", Version = "v1" });
-            });
+            
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RegistrationApi", Version = "v1" });});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

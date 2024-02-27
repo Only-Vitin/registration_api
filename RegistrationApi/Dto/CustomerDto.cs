@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RegistrationApi.Entities.Users
+namespace RegistrationApi.Dto
 {
-    [Table("User")]
-    public abstract class User
+    public class CustomerDto
     {
         public int Id { get; set; }
         public string Name { get;  set; }
@@ -15,7 +11,8 @@ namespace RegistrationApi.Entities.Users
         public string CPF { get; set; }
         public string Email { get;  set; }
         public string Password { get;  set; }
-
-        public ICollection<Token> Tokens { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public TimeSpan CustomerFor { get; set; }
+        public double TotalAmountSpent { get; set; }
     }
 }

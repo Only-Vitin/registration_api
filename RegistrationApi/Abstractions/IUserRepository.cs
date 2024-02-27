@@ -1,16 +1,15 @@
-using RegistrationApi.Entities.Users;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace RegistrationApi.Abstractions
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAllUsers();
-        User GetUserById(int id);
-        User GetUserByEmail(string email);
-        void AddUser(User user);
-        void UpdateUser(InputUserDto updatedUser, User user);
-        void DeleteUser(User user);
+        IEnumerable GetAll();
+        T GetById<T>(int id);
+        void Add<T>(T user);
+        void Update<T>(T updatedUser);
+        void Delete<T>(T user);
         void SaveChanges();
     }
 }

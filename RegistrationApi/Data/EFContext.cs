@@ -31,13 +31,7 @@ namespace RegistrationApi.Data
             modelBuilder.Entity<Food>().HasBaseType<Product>();
 
             modelBuilder.Entity<User>().HasKey(u => u.Id);
-            modelBuilder.Entity<Customer>().HasKey(c => c.Id);
-            modelBuilder.Entity<Employee>().HasKey(e => e.Id);
-
             modelBuilder.Entity<Product>().HasKey(p => p.Id);
-            modelBuilder.Entity<Cleaning>().HasKey(c => c.Id);
-            modelBuilder.Entity<Drink>().HasKey(d => d.Id);
-            modelBuilder.Entity<Food>().HasKey(f => f.Id);
 
             modelBuilder.Entity<Token>().HasKey(t => t.Id);
 
