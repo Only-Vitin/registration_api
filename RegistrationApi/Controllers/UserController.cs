@@ -1,8 +1,7 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
+using RegistrationApi.Dto;
 using RegistrationApi.Entities.Users;
-using RegistrationApi.Factory.ConcreteCreator;
-using RegistrationApi.Factory.Creator;
+using RegistrationApi.Services;
 
 namespace RegistrationApi.Controllers
 {
@@ -10,24 +9,34 @@ namespace RegistrationApi.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        [HttpPost("{userType}")]
-        public IActionResult PostUser(int userType, [FromBody] User userInfos)
+        private readonly CustomerService _customerService;
+
+        public UserController(CustomerService customerService)
         {
-            UserFactory userFactory = null;
-            switch(userType)
-            {
-                case 1:
-                    userFactory = new CustomerFactory();
-                    break;
-                case 2:
-                    userFactory = new EmployeeFactory();
-                    break;
-            }
+            _customerService = customerService;
+        }
 
-            User user = userFactory.Create();
-            Console.WriteLine(user.GetType());
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var customers = _customerService.Get();
+            return Ok(customers);
+        }
 
-            return Ok();
+        [HttpGet("{userId}")]
+        public IActionResult GetById(int userId)
+        {
+            var customer = _customerService.GetById(userId);
+            return Ok(customer);
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] UserDto userDto)
+        {
+            User user = UserFactory.Create(userDto);
+            var createdCustomer = _customerService.Post(user);
+
+            return Ok(createdCustomer);
         }
     }
 }

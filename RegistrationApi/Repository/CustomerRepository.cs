@@ -1,13 +1,13 @@
-using System;
-using System.Collections.Generic;
+using AutoMapper;
 using System.Linq;
-using RegistrationApi.Abstractions;
 using RegistrationApi.Data;
-using RegistrationApi.Dto;
+using System.Collections.Generic;
+using RegistrationApi.Abstractions;
+using RegistrationApi.Entities.Users;
 
 namespace RegistrationApi.Repository
 {
-    public class CustomerRepository : IUserRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly EFContext _context;
 
@@ -16,31 +16,14 @@ namespace RegistrationApi.Repository
             _context = context;
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<Customer> GetAllCustomers()
         {
-            var users = _context.User;
-            var customers = _context.Customer;
-
-            var customersJoin = users.Join(customers, u => u.Id, c => c.Id, (users, customers) => new 
-            {
-                Name = users.Name,  
-                BirthDate = users.BirthDate,
-                Gender = users.Gender,
-                CPF = users.CPF,
-                Email = users.Email,
-                Password = users.Password,
-                RegistrationDate = customers.RegistrationDate,
-                CustomerFor = customers.CustomerFor,
-                TotalAmountSpent = customers.RegistrationDate
-            });
-
-            return customersJoin;
+            return _context.Customer;
         }
 
-        // T GetById(int id);
-        // void Add(T user);
-        // void Update(T updatedUser);
-        // void Delete(T user);
-        // void SaveChanges();
+        public Customer GetCustomerById(int id)
+        {
+            return _context.Customer.Where(c => c.Id == id).SingleOrDefault();
+        }
     }
 }

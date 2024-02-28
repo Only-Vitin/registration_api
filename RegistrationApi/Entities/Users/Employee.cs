@@ -13,11 +13,9 @@ namespace RegistrationApi.Entities.Users
         [Required]
         public DateTime HiringDate { get; set; }
 
-        public TimeSpan ContractedTime 
+        public string ContractedTime 
         { 
-            get => DateTime.Now.Subtract(HiringDate);
+            get => $"{DateTime.Now.Subtract(HiringDate).Days} dias";
         }
-        
-        public TimeSpan OvertimeWorked { get; set; }
     }
 }

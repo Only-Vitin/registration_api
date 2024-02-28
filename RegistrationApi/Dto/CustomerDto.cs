@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.OpenApi.Any;
 
 namespace RegistrationApi.Dto
 {
-    public class CustomerDto
+    public class UserDto
     {
         public int Id { get; set; }
         public string Name { get;  set; }
@@ -11,8 +13,7 @@ namespace RegistrationApi.Dto
         public string CPF { get; set; }
         public string Email { get;  set; }
         public string Password { get;  set; }
-        public DateTime RegistrationDate { get; set; }
-        public TimeSpan CustomerFor { get; set; }
-        public double TotalAmountSpent { get; set; }
+        public int Type { get; set; } 
+        public Dictionary<string, string> Fields { get; set; }
     }
 }

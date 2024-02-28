@@ -10,9 +10,9 @@ namespace RegistrationApi.Entities.Users
         [Required]
         public DateTime RegistrationDate { get; set; }
 
-        public TimeSpan CustomerFor
+        public string CustomerFor
         {
-            get => DateTime.Now.Subtract(RegistrationDate);
+            get => $"{DateTime.Now.Subtract(RegistrationDate).Days} dias";
         }
 
         [Required]
