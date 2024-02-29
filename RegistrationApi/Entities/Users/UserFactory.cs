@@ -1,16 +1,31 @@
+#nullable enable
 using System;
-
+using System.Collections.Generic;
 using RegistrationApi.Dto;
 
 namespace RegistrationApi.Entities.Users
 {
     public abstract class UserFactory
     {
-        public static User Create(UserDto userDto)
+        public static User? Create(UserDto userDto)
         {
-            if(userDto.Type == 1)
+            try
             {
-                return new Customer()
+                if(userDto.Type == 1)
+                {
+                    return new Customer()
+                    {
+                        Name = userDto.Name,
+                        BirthDate = userDto.BirthDate,
+                        Gender = userDto.Gender,
+                        CPF = userDto.CPF,
+                        Email = userDto.Email,
+                        Password = userDto.Password,
+                        RegistrationDate = DateTime.Parse(userDto.Fields["registrationdate"]),
+                        TotalAmountSpent = double.Parse(userDto.Fields["totalamountspent"])
+                    };
+                }
+                return new Employee()
                 {
                     Name = userDto.Name,
                     BirthDate = userDto.BirthDate,
@@ -18,21 +33,14 @@ namespace RegistrationApi.Entities.Users
                     CPF = userDto.CPF,
                     Email = userDto.Email,
                     Password = userDto.Password,
-                    RegistrationDate = DateTime.Parse(userDto.Fields["registrationdate"]),
-                    TotalAmountSpent = double.Parse(userDto.Fields["totalamountspent"])
+                    Salary = double.Parse(userDto.Fields["salary"]),
+                    HiringDate = DateTime.Parse(userDto.Fields["hiringdate"])
                 };
             }
-            return new Employee()
+            catch(KeyNotFoundException)
             {
-                Name = userDto.Name,
-                BirthDate = userDto.BirthDate,
-                Gender = userDto.Gender,
-                CPF = userDto.CPF,
-                Email = userDto.Email,
-                Password = userDto.Password,
-                Salary = double.Parse(userDto.Fields["salary"]),
-                HiringDate = DateTime.Parse(userDto.Fields["hiringdate"])
-            };
+                return null;
+            }
         }
     }
 }

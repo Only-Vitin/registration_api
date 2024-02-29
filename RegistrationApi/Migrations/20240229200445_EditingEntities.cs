@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistrationApi.Migrations
 {
-    public partial class FisrtMigration : Migration
+    public partial class EditingEntities : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -150,8 +150,7 @@ namespace RegistrationApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Salary = table.Column<double>(type: "double", nullable: false),
-                    HiringDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    OvertimeWorked = table.Column<TimeSpan>(type: "time(6)", nullable: false)
+                    HiringDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {

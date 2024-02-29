@@ -6,9 +6,8 @@ namespace RegistrationApi.Abstractions
 {
     public interface IUserRepository
     {
-        IEnumerable<User> GetAllUsers();
-        void AddUser(User customerDto);
-        void UpdateUser(User updatedCustomer);
+        void AddUser(User user);
+        void UpdateUser(User updatedUser);
         void DeleteUser(User User);
         void SaveChanges();
     }

@@ -9,8 +9,8 @@ using RegistrationApi.Data;
 namespace RegistrationApi.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20240227185825_FisrtMigration")]
-    partial class FisrtMigration
+    [Migration("20240229200445_EditingEntities")]
+    partial class EditingEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -156,9 +156,6 @@ namespace RegistrationApi.Migrations
 
                     b.Property<DateTime>("HiringDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<TimeSpan>("OvertimeWorked")
-                        .HasColumnType("time(6)");
 
                     b.Property<double>("Salary")
                         .HasColumnType("double");

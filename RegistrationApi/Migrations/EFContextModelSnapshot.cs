@@ -155,9 +155,6 @@ namespace RegistrationApi.Migrations
                     b.Property<DateTime>("HiringDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<TimeSpan>("OvertimeWorked")
-                        .HasColumnType("time(6)");
-
                     b.Property<double>("Salary")
                         .HasColumnType("double");
 

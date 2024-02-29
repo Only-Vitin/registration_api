@@ -27,8 +27,12 @@ namespace RegistrationApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddScoped<CustomerService>();
+            services.AddScoped<EmployeeService>();
+            services.AddScoped<UserService>();
 
             services.AddDbContext<EFContext>(opts => 
                 opts.UseMySql(Configuration.GetConnectionString("MySQLConnection"), 
