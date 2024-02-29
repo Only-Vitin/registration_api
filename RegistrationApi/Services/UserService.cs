@@ -1,3 +1,4 @@
+#nullable enable
 using System.Linq;
 using System.Collections.Generic;
 
@@ -28,6 +29,14 @@ namespace RegistrationApi.Services
             allUsers = allUsers.Concat(employees).ToList().Concat(customers).ToList();
 
             return allUsers;
+        }
+
+        public User? GetById(int id)
+        {
+            var employee = _employeeRepository.GetEmployeeById(id);
+            if(employee != null) return employee;
+
+            return _customerRepository.GetCustomerById(id);
         }
 
         public User Post(User user)

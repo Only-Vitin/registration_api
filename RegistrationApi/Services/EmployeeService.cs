@@ -19,10 +19,5 @@ namespace RegistrationApi.Services
         {
             return _employeeRepository.GetAllEmployees().ToList();
         }
-
-        public Employee GetById(int id)
-        {
-            return _employeeRepository.GetEmployeeById(id);
-        }
     }
 }

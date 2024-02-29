@@ -19,10 +19,5 @@ namespace RegistrationApi.Services
         {
             return _customerRepository.GetAllCustomers().ToList();
         }
-
-        public Customer GetById(int id)
-        {
-            return _customerRepository.GetCustomerById(id);
-        }
     }
 }

@@ -25,17 +25,21 @@ namespace RegistrationApi.Entities.Users
                         TotalAmountSpent = double.Parse(userDto.Fields["totalamountspent"])
                     };
                 }
-                return new Employee()
+                else if(userDto.Type == 2)
                 {
-                    Name = userDto.Name,
-                    BirthDate = userDto.BirthDate,
-                    Gender = userDto.Gender,
-                    CPF = userDto.CPF,
-                    Email = userDto.Email,
-                    Password = userDto.Password,
-                    Salary = double.Parse(userDto.Fields["salary"]),
-                    HiringDate = DateTime.Parse(userDto.Fields["hiringdate"])
-                };
+                    return new Employee()
+                    {
+                        Name = userDto.Name,
+                        BirthDate = userDto.BirthDate,
+                        Gender = userDto.Gender,
+                        CPF = userDto.CPF,
+                        Email = userDto.Email,
+                        Password = userDto.Password,
+                        Salary = double.Parse(userDto.Fields["salary"]),
+                        HiringDate = DateTime.Parse(userDto.Fields["hiringdate"])
+                    };
+                }
+                return null;
             }
             catch(KeyNotFoundException)
             {

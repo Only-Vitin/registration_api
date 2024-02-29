@@ -1,9 +1,9 @@
-#nullable enable
 using Microsoft.AspNetCore.Mvc;
 
 using RegistrationApi.Dto;
 using RegistrationApi.Services;
 using RegistrationApi.Entities.Users;
+using Microsoft.AspNetCore.Http;
 
 namespace RegistrationApi.Controllers
 {
@@ -43,30 +43,26 @@ namespace RegistrationApi.Controllers
             return Ok(users);
         }
 
-        [HttpGet("customer/{userId}")]
-        public IActionResult GetCustomerById(int userId)
-        {
-            var customer = _customerService.GetById(userId);
-            return Ok(customer);
-        }
-
-        [HttpGet("employee/{userId}")]
+        [HttpGet("{userId}")]
         public IActionResult GetEmployeeById(int userId)
         {
-            var employee = _employeeService.GetById(userId);
-            return Ok(employee);
+            var user = _userService.GetById(userId);
+            if(user != null) return Ok(user);
+
+            return NotFound();
         }
         
         [HttpPost]
         public IActionResult Post([FromBody] UserDto userDto)
         {
-            User? user = UserFactory.Create(userDto);
+            var user = UserFactory.Create(userDto);
             if(user != null)
             {
                 User createdUser = _userService.Post(user);
-                return Ok(createdUser);
+                return StatusCode(StatusCodes.Status201Created, createdUser);
             }
-            return BadRequest();
+            ResponseMessageDto messageDto = new("Verifique o tipo do usuário");
+            return BadRequest(messageDto);
         }
     }
 }
