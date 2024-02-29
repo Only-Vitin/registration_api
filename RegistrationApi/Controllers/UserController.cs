@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+
 using RegistrationApi.Dto;
-using RegistrationApi.Entities.Users;
 using RegistrationApi.Services;
+using RegistrationApi.Entities.Users;
 
 namespace RegistrationApi.Controllers
 {

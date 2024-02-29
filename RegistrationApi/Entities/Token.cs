@@ -1,6 +1,7 @@
-using RegistrationApi.Entities.Users;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+using RegistrationApi.Entities.Users;
 
 namespace RegistrationApi.Entities
 {

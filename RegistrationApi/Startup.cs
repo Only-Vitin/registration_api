@@ -1,6 +1,5 @@
 using System;
 using AutoMapper;
-using RegistrationApi.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
@@ -8,11 +7,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RegistrationApi.Abstractions;
-using RegistrationApi.Entities.Users;
-using RegistrationApi.Repository;
+
+using RegistrationApi.Data;
 using RegistrationApi.Services;
-using RegistrationApi.Dto;
+using RegistrationApi.Repository;
+using RegistrationApi.Abstractions;
 
 namespace RegistrationApi
 {

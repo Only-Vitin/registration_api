@@ -1,4 +1,5 @@
 using System;
+
 using RegistrationApi.Dto;
 
 namespace RegistrationApi.Entities.Users

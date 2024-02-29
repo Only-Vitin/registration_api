@@ -1,7 +1,7 @@
-using AutoMapper;
 using System.Linq;
-using RegistrationApi.Data;
 using System.Collections.Generic;
+
+using RegistrationApi.Data;
 using RegistrationApi.Abstractions;
 using RegistrationApi.Entities.Users;
 

@@ -1,7 +1,8 @@
-using System.Collections.Generic;
 using System.Linq;
-using RegistrationApi.Abstractions;
+using System.Collections.Generic;
+
 using RegistrationApi.Data;
+using RegistrationApi.Abstractions;
 using RegistrationApi.Entities.Users;
 
 namespace RegistrationApi.Repository

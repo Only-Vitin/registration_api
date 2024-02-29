@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+
+using EmailServiceApi.Dto;
 using EmailServiceApi.Application.Services;
 using EmailServiceApi.Application.Abstractions;
-using EmailServiceApi.Dto;
-using Microsoft.AspNetCore.Http;
-using System;
 
 namespace EmailServiceApi.Adapters.Presentation
 {

@@ -1,10 +1,10 @@
-using System.Linq;
 using AutoMapper;
+using System.Linq;
+using System.Collections.Generic;
+
 using RegistrationApi.Data;
 using RegistrationApi.Abstractions;
 using RegistrationApi.Entities.Users;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
 
 namespace RegistrationApi.Repository
 {

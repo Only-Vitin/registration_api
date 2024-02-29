@@ -2,10 +2,11 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using EmailServiceApi.Infrastructure;
 using Microsoft.Extensions.Configuration;
-using EmailServiceApi.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
+
+using EmailServiceApi.Infrastructure;
+using EmailServiceApi.Application.Services;
 using EmailServiceApi.Application.Abstractions;
 
 namespace EmailServiceApi

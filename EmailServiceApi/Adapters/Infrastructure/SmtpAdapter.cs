@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Mail;
+
 using EmailServiceApi.Application.Abstractions;
 
 namespace EmailServiceApi.Infrastructure
@@ -8,7 +9,7 @@ namespace EmailServiceApi.Infrastructure
     {
         public void SendEmail(string from, string to, string subject, string body)
         {
-            MailMessage emailMessage = new(from, to, subject, body);
+            MailMessage emailMessage = new(from, to, subject, body){ IsBodyHtml = true };
 
             SmtpClient client = new("smtp.gmail.com", 587){ EnableSsl = true };
             NetworkCredential credential = new("silvas.joaov@gmail.com", "thic nztt pzig smjd");
