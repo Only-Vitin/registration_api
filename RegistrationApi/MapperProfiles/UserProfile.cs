@@ -1,4 +1,5 @@
 using AutoMapper;
+
 using RegistrationApi.Entities.Users;
 
 namespace RegistrationApi.Profiles

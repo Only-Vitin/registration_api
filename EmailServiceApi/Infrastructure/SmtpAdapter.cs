@@ -1,8 +1,8 @@
 using System.Net;
 using System.Net.Mail;
-using EmailServiceApi.Adapters.Infrastructure;
-using EmailServiceApi.Application.Abstractions;
 using Microsoft.Extensions.Options;
+
+using EmailServiceApi.Application.Abstractions;
 
 namespace EmailServiceApi.Infrastructure
 {

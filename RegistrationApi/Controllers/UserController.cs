@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 using RegistrationApi.Dto;
 using RegistrationApi.Services;
 using RegistrationApi.Entities.Users;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.ComponentModel;
 
 namespace RegistrationApi.Controllers
 {

@@ -1,10 +1,11 @@
 #nullable enable
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 
 using RegistrationApi.Abstractions;
 using RegistrationApi.Entities.Users;
-using System;
 
 namespace RegistrationApi.Services
 {

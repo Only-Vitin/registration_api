@@ -9,10 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using RegistrationApi.Data;
+using RegistrationApi.Profiles;
 using RegistrationApi.Services;
 using RegistrationApi.Repository;
 using RegistrationApi.Abstractions;
-using RegistrationApi.Profiles;
 
 namespace RegistrationApi
 {

@@ -1,5 +1,6 @@
-using EmailServiceApi.Dto;
 using Microsoft.AspNetCore.Mvc;
+
+using EmailServiceApi.Dto;
 
 namespace EmailServiceApi.Application.Abstractions
 {

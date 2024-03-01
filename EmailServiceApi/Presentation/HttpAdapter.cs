@@ -5,7 +5,7 @@ using EmailServiceApi.Dto;
 using EmailServiceApi.Application.Services;
 using EmailServiceApi.Application.Abstractions;
 
-namespace EmailServiceApi.Adapters.Presentation
+namespace EmailServiceApi.Presentation
 {
     [ApiController]
     [Route("api/send_email")]

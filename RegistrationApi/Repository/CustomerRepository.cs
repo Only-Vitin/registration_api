@@ -1,11 +1,11 @@
+using System;
+using AutoMapper;
 using System.Linq;
 using System.Collections.Generic;
 
 using RegistrationApi.Data;
 using RegistrationApi.Abstractions;
 using RegistrationApi.Entities.Users;
-using AutoMapper;
-using System;
 
 namespace RegistrationApi.Repository
 {

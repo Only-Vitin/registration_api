@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using EmailServiceApi.Infrastructure;
 using EmailServiceApi.Application.Services;
 using EmailServiceApi.Application.Abstractions;
-using EmailServiceApi.Adapters.Infrastructure;
 
 namespace EmailServiceApi
 {

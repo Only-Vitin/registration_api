@@ -1,4 +1,4 @@
-namespace EmailServiceApi.Adapters.Infrastructure
+namespace EmailServiceApi.Infrastructure
 {
     public class SmtpConfig
     {
