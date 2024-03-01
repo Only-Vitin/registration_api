@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
 using RegistrationApi.Dto;
-using RegistrationApi.Services;
 using RegistrationApi.Entities.Users;
+using RegistrationApi.Services.Users;
+using System.Threading.Tasks;
 
 namespace RegistrationApi.Controllers
 {
@@ -53,12 +54,13 @@ namespace RegistrationApi.Controllers
         }
         
         [HttpPost]
-        public IActionResult Post([FromBody] UserDto userDto)
+        public async Task<IActionResult> Post([FromBody] UserDto userDto)
         {
             var user = UserFactory.Create(userDto);
             if(user != null)
             {
-                User createdUser = _userService.Post(user);
+                User createdUser = await Task.Run(() => _userService.Post(user));
+
                 return StatusCode(StatusCodes.Status201Created, createdUser);
             }
             ResponseMessageDto messageDto = new("Verifique os campos específicos/fields");

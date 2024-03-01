@@ -4,8 +4,8 @@ namespace RegistrationApi.Interfaces.Users
 {
     public interface IUserRepository
     {
-        void AddUser(User user);
-        void DeleteUser(User User);
+        void Add(User user);
+        void Delete(User User);
         void SaveChanges();
     }
 }

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Entities.Users;
+using RegistrationApi.Email;
+using System.Threading.Tasks;
 
 namespace RegistrationApi.Services.Users
 {
@@ -14,18 +16,20 @@ namespace RegistrationApi.Services.Users
         private readonly IUserRepository _userRepository;
         private readonly ICustomerRepository _customerRepository;
         private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmailSender _emailSender;
 
-        public UserService(IUserRepository userRepository, ICustomerRepository customerRepository, IEmployeeRepository employeeRepository)
+        public UserService(IUserRepository userRepository, ICustomerRepository customerRepository, IEmployeeRepository employeeRepository, IEmailSender emailSender)
         {
             _userRepository = userRepository;
             _customerRepository = customerRepository;
             _employeeRepository = employeeRepository;
+            _emailSender = emailSender;
         }
 
         public IEnumerable<object> Get()
         {
-            var employees = _employeeRepository.GetAllEmployees().ToList();
-            var customers = _customerRepository.GetAllCustomers().ToList();
+            var employees = _employeeRepository.GetAll().ToList();
+            var customers = _customerRepository.GetAll().ToList();
 
             List<object> allUsers = new();
             allUsers = allUsers.Concat(employees).ToList().Concat(customers).ToList();
@@ -35,17 +39,18 @@ namespace RegistrationApi.Services.Users
 
         public User? GetById(int id)
         {
-            var employee = _employeeRepository.GetEmployeeById(id);
+            var employee = _employeeRepository.GetById(id);
             if(employee != null) return employee;
 
-            return _customerRepository.GetCustomerById(id);
+            return _customerRepository.GetById(id);
         }
 
-        public User Post(User user)
+        public async Task<User> Post(User user)
         {
-            _userRepository.AddUser(user);
+            _userRepository.Add(user);
             _userRepository.SaveChanges();
-
+            
+            await _emailSender.SendAsync("silvas.joaov@gmail.com", user.Email, "Valide seu cadastro!", EmailMessage.CreateUserBody);
             return user;
         }
 
@@ -54,9 +59,9 @@ namespace RegistrationApi.Services.Users
             try
             {
                 if(updatedUser is Customer customer)
-                    _customerRepository.UpdateCustomer(customer, id);
+                    _customerRepository.Update(customer, id);
                 else if(updatedUser is Employee employee)
-                    _employeeRepository.UpdateEmployee(employee, id);
+                    _employeeRepository.Update(employee, id);
                     
                 _userRepository.SaveChanges();
                 return true;
@@ -73,7 +78,7 @@ namespace RegistrationApi.Services.Users
 
             try
             {
-                _userRepository.DeleteUser(user);
+                _userRepository.Delete(user);
                 _userRepository.SaveChanges();
                 return true;
             }

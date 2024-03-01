@@ -6,8 +6,8 @@ namespace RegistrationApi.Interfaces.Users
 {
     public interface IEmployeeRepository
     {
-        IEnumerable<Employee> GetAllEmployees();
-        Employee GetEmployeeById(int id);
-        void UpdateEmployee(Employee updatedEmployee, int id);
+        IEnumerable<Employee> GetAll();
+        Employee GetById(int id);
+        void Update(Employee updatedEmployee, int id);
     }
 }

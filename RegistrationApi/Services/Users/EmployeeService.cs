@@ -17,7 +17,7 @@ namespace RegistrationApi.Services.Users
 
         public IEnumerable<Employee> Get()
         {
-            return _employeeRepository.GetAllEmployees().ToList();
+            return _employeeRepository.GetAll().ToList();
         }
     }
 }

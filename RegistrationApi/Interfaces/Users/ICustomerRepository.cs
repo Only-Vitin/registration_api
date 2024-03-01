@@ -6,8 +6,8 @@ namespace RegistrationApi.Interfaces.Users
 {
     public interface ICustomerRepository
     {
-        IEnumerable<Customer> GetAllCustomers();
-        Customer GetCustomerById(int id);
-        void UpdateCustomer(Customer updatedCustomer, int id);
+        IEnumerable<Customer> GetAll();
+        Customer GetById(int id);
+        void Update(Customer updatedCustomer, int id);
     }
 }

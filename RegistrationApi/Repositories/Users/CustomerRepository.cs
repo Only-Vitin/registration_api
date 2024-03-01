@@ -20,17 +20,17 @@ namespace RegistrationApi.Repositories.Users
             _mapper = mapper;
         }
 
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<Customer> GetAll()
         {
             return _context.Customer;
         }
 
-        public Customer GetCustomerById(int id)
+        public Customer GetById(int id)
         {
             return _context.Customer.Where(c => c.Id == id).SingleOrDefault();
         }
 
-        public void UpdateCustomer(Customer updatedCustomer, int id)
+        public void Update(Customer updatedCustomer, int id)
         {
             Customer customer = _context.Customer.Where(c => c.Id == id).SingleOrDefault();
             if(customer == null)

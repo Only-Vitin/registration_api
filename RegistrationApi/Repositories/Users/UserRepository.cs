@@ -13,12 +13,12 @@ namespace RegistrationApi.Repositories.Users
             _context = context;
         }
 
-        public void AddUser(User user)
+        public void Add(User user)
         {
             _context.User.Add(user);
         }
 
-        public void DeleteUser(User user)
+        public void Delete(User user)
         {
             _context.User.Remove(user);
         }

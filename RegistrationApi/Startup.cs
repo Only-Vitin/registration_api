@@ -13,6 +13,7 @@ using RegistrationApi.Profiles;
 using RegistrationApi.Services.Users;
 using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Repositories.Users;
+using RegistrationApi.Email;
 
 namespace RegistrationApi
 {
@@ -30,6 +31,7 @@ namespace RegistrationApi
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEmailSender, EmailSenderHttp>();
 
             services.AddScoped<CustomerService>();
             services.AddScoped<EmployeeService>();
