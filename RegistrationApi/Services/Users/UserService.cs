@@ -4,10 +4,10 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-using RegistrationApi.Abstractions;
+using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Entities.Users;
 
-namespace RegistrationApi.Services
+namespace RegistrationApi.Services.Users
 {
     public class UserService
     {

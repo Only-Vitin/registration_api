@@ -10,9 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 using RegistrationApi.Data;
 using RegistrationApi.Profiles;
-using RegistrationApi.Services;
-using RegistrationApi.Repository;
-using RegistrationApi.Abstractions;
+using RegistrationApi.Services.Users;
+using RegistrationApi.Interfaces.Users;
+using RegistrationApi.Repositories.Users;
 
 namespace RegistrationApi
 {

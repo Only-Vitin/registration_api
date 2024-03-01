@@ -4,10 +4,10 @@ using System.Linq;
 using System.Collections.Generic;
 
 using RegistrationApi.Data;
-using RegistrationApi.Abstractions;
+using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Entities.Users;
 
-namespace RegistrationApi.Repository
+namespace RegistrationApi.Repositories.Users
 {
     public class EmployeeRepository : IEmployeeRepository
     {
