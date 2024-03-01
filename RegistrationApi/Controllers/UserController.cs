@@ -4,6 +4,8 @@ using RegistrationApi.Dto;
 using RegistrationApi.Services;
 using RegistrationApi.Entities.Users;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel;
 
 namespace RegistrationApi.Controllers
 {
@@ -61,8 +63,30 @@ namespace RegistrationApi.Controllers
                 User createdUser = _userService.Post(user);
                 return StatusCode(StatusCodes.Status201Created, createdUser);
             }
+            ResponseMessageDto messageDto = new("Verifique os campos específicos/fields");
+            return BadRequest(messageDto);
+        }
+
+        [HttpPut("{userId}")]
+        public IActionResult Put(int userId, [FromBody] UserDto userDto)
+        {
+            var updatedUser = UserFactory.Create(userDto);
+            if(updatedUser != null)
+            {
+                if(_userService.Put(updatedUser, userId))
+                    return NoContent();
+                return NotFound();
+            }
             ResponseMessageDto messageDto = new("Verifique o tipo do usuário");
             return BadRequest(messageDto);
+        }
+
+        [HttpDelete("{userId}")]
+        public IActionResult Delete(int userId)
+        {
+            if(_userService.Delete(userId))
+                return NoContent();
+            return NotFound();
         }
     }
 }

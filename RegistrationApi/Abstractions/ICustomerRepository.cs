@@ -8,5 +8,6 @@ namespace RegistrationApi.Abstractions
     {
         IEnumerable<Customer> GetAllCustomers();
         Customer GetCustomerById(int id);
+        void UpdateCustomer(Customer updatedCustomer, int id);
     }
 }

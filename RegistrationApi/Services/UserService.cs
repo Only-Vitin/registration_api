@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using RegistrationApi.Abstractions;
 using RegistrationApi.Entities.Users;
+using System;
 
 namespace RegistrationApi.Services
 {
@@ -47,16 +48,38 @@ namespace RegistrationApi.Services
             return user;
         }
 
-        public void Put(User user)
+        public bool Put(User updatedUser, int id)
         {
-            _userRepository.UpdateUser(user);
-            _userRepository.SaveChanges();
+            try
+            {
+                if(updatedUser is Customer customer)
+                    _customerRepository.UpdateCustomer(customer, id);
+                else if(updatedUser is Employee employee)
+                    _employeeRepository.UpdateEmployee(employee, id);
+                    
+                _userRepository.SaveChanges();
+                return true;
+            }
+            catch(ArgumentException)
+            {
+                return false;
+            }
         }
 
-        public void Delete(User user)
+        public bool Delete(int id)
         {
-            _userRepository.DeleteUser(user);
-            _userRepository.SaveChanges();
+            var user = GetById(id);
+
+            try
+            {
+                _userRepository.DeleteUser(user);
+                _userRepository.SaveChanges();
+                return true;
+            }
+            catch(ArgumentNullException)
+            {
+                return false;
+            }
         }
     }
 }

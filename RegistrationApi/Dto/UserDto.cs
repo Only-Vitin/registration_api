@@ -35,7 +35,7 @@ namespace RegistrationApi.Dto
         [DataType(DataType.Password)]
         public string Password { get;  set; }
 
-        [Display(Name = "1 - Cliente | 2 - Funcionário")]
+        [Display(Name = "Tipo do Usuário")]
         [Required(ErrorMessage = "Informe o tipo do usuário", AllowEmptyStrings = false)]
         [Range(1, 2)]
         public int Type { get; set; }

@@ -12,6 +12,7 @@ using RegistrationApi.Data;
 using RegistrationApi.Services;
 using RegistrationApi.Repository;
 using RegistrationApi.Abstractions;
+using RegistrationApi.Profiles;
 
 namespace RegistrationApi
 {
@@ -39,7 +40,11 @@ namespace RegistrationApi
                 ServerVersion.AutoDetect(Configuration.GetConnectionString("MySQLConnection"))));
 
             services.AddControllers();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(cfg =>
+            {
+                AppDomain.CurrentDomain.GetAssemblies();
+                cfg.AddProfile<UserProfile>();
+            });
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RegistrationApi", Version = "v1" });});
         }
