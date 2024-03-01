@@ -4,16 +4,20 @@ namespace EmailServiceApi.Dto
 {
     public class EmailDto
     {
-        [Required]
+        [Display(Name = "Remetente")]
+        [Required(ErrorMessage = "Informe o remetente ", AllowEmptyStrings = false)]
         public string From { get; set; }
 
-        [Required]
+        [Display(Name = "Destinatário")]
+        [Required(ErrorMessage = "Informe o destinatário", AllowEmptyStrings = false)]
         public string To { get; set; }
 
-        [Required]
+        [Display(Name = "Assunto")]
+        [Required(ErrorMessage = "Informe o assunto do email", AllowEmptyStrings = false)]
         public string Subject { get; set; }
 
-        [Required]
+        [Display(Name = "Corpo")]
+        [Required(ErrorMessage = "Informe o corpo do email", AllowEmptyStrings = false)]
         public string Body { get; set; }
     }
 }

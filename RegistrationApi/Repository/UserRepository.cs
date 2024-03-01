@@ -1,6 +1,5 @@
 using AutoMapper;
 using System.Linq;
-using System.Collections.Generic;
 
 using RegistrationApi.Data;
 using RegistrationApi.Abstractions;

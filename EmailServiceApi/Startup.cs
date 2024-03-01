@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using EmailServiceApi.Infrastructure;
 using EmailServiceApi.Application.Services;
 using EmailServiceApi.Application.Abstractions;
+using EmailServiceApi.Adapters.Infrastructure;
 
 namespace EmailServiceApi
 {
@@ -31,6 +32,8 @@ namespace EmailServiceApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EmailServiceApi", Version = "v1" });
             });
+
+            services.Configure<SmtpConfig>(Configuration.GetSection("SmtpConfig"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

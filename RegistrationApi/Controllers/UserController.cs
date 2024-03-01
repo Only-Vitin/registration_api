@@ -44,7 +44,7 @@ namespace RegistrationApi.Controllers
         }
 
         [HttpGet("{userId}")]
-        public IActionResult GetEmployeeById(int userId)
+        public IActionResult GetById(int userId)
         {
             var user = _userService.GetById(userId);
             if(user != null) return Ok(user);
