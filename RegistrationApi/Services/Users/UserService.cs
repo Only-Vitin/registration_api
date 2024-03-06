@@ -2,12 +2,13 @@
 
 using System;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Entities.Users;
 using RegistrationApi.Email;
-using System.Threading.Tasks;
 
 namespace RegistrationApi.Services.Users
 {
@@ -54,38 +55,23 @@ namespace RegistrationApi.Services.Users
             return user;
         }
 
-        public bool Put(User updatedUser, int id)
+        public void Put(User updatedUser, int id)
         {
-            try
-            {
-                if(updatedUser is Customer customer)
-                    _customerRepository.Update(customer, id);
-                else if(updatedUser is Employee employee)
-                    _employeeRepository.Update(employee, id);
-                    
-                _userRepository.SaveChanges();
-                return true;
-            }
-            catch(ArgumentException)
-            {
-                return false;
-            }
+            if(updatedUser is Customer customer)
+                _customerRepository.Update(customer, id);
+            else if(updatedUser is Employee employee)
+                _employeeRepository.Update(employee, id);
+                
+            _userRepository.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             var user = GetById(id);
 
-            try
-            {
-                _userRepository.Delete(user);
-                _userRepository.SaveChanges();
-                return true;
-            }
-            catch(ArgumentNullException)
-            {
-                return false;
-            }
+            _userRepository.Delete(user);
+            _userRepository.SaveChanges();
+
         }
     }
 }

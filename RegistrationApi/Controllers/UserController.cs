@@ -1,10 +1,10 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
 using RegistrationApi.Dto;
 using RegistrationApi.Entities.Users;
 using RegistrationApi.Services.Users;
-using System.Threading.Tasks;
 
 namespace RegistrationApi.Controllers
 {
@@ -48,45 +48,44 @@ namespace RegistrationApi.Controllers
         public IActionResult GetById(int userId)
         {
             var user = _userService.GetById(userId);
-            if(user != null) return Ok(user);
+            if(user == null) return NotFound();
 
-            return NotFound();
+            return Ok(user);
         }
         
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] UserDto userDto)
         {
             var user = UserFactory.Create(userDto);
-            if(user != null)
+            if(user == null)
             {
-                User createdUser = await Task.Run(() => _userService.Post(user));
-
-                return StatusCode(StatusCodes.Status201Created, createdUser);
+                ResponseMessageDto messageDto = new("Verifique os campos específicos/fields");
+                return BadRequest(messageDto);
             }
-            ResponseMessageDto messageDto = new("Verifique os campos específicos/fields");
-            return BadRequest(messageDto);
+
+            User createdUser = await Task.Run(() => _userService.Post(user));
+            return StatusCode(StatusCodes.Status201Created, createdUser);
         }
 
         [HttpPut("{userId}")]
         public IActionResult Put(int userId, [FromBody] UserDto userDto)
         {
             var updatedUser = UserFactory.Create(userDto);
-            if(updatedUser != null)
+            if(updatedUser == null)
             {
-                if(_userService.Put(updatedUser, userId))
-                    return NoContent();
-                return NotFound();
+                ResponseMessageDto messageDto = new("Verifique o tipo do usuário");
+                return BadRequest(messageDto);
             }
-            ResponseMessageDto messageDto = new("Verifique o tipo do usuário");
-            return BadRequest(messageDto);
+
+            _userService.Put(updatedUser, userId);
+            return NoContent();
         }
 
         [HttpDelete("{userId}")]
         public IActionResult Delete(int userId)
         {
-            if(_userService.Delete(userId))
-                return NoContent();
-            return NotFound();
+            _userService.Delete(userId);
+            return NoContent();
         }
     }
 }
