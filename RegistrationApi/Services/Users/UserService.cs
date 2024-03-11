@@ -6,9 +6,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using RegistrationApi.Interfaces.Users;
-using RegistrationApi.Entities.Users;
 using RegistrationApi.Email;
+using RegistrationApi.Entities.Users;
+using RegistrationApi.Interfaces.Users;
+using RegistrationApi.Services.Exceptions;
 
 namespace RegistrationApi.Services.Users
 {
@@ -48,29 +49,50 @@ namespace RegistrationApi.Services.Users
 
         public async Task<User> Post(User user)
         {
-            _userRepository.Add(user);
-            _userRepository.SaveChanges();
-            
-            await _emailSender.SendAsync("silvas.joaov@gmail.com", user.Email, "Valide seu cadastro!", EmailMessage.CreateUserBody);
-            return user;
+            try
+            {
+                _userRepository.Add(user);
+                _userRepository.SaveChanges();
+                
+                await _emailSender.SendAsync("silvas.joaov@gmail.com", user.Email, "Valide seu cadastro!", EmailMessage.CreateUserBody);
+                return user;
+            }
+            catch(HttpRequestException)
+            {
+                throw new HttpRequestException("Erro na api de envio de emails");
+            }
         }
 
         public void Put(User updatedUser, int id)
         {
-            if(updatedUser is Customer customer)
-                _customerRepository.Update(customer, id);
-            else if(updatedUser is Employee employee)
-                _employeeRepository.Update(employee, id);
-                
-            _userRepository.SaveChanges();
+            try
+            {
+                if(updatedUser is Customer customer)
+                    _customerRepository.Update(customer, id);
+                else if(updatedUser is Employee employee)
+                    _employeeRepository.Update(employee, id);
+                    
+                _userRepository.SaveChanges();
+            }
+            catch(ArgumentException)
+            {
+                throw new NotFoundException("Id não encontrado");
+            }
         }
 
         public void Delete(int id)
         {
-            var user = GetById(id);
+            try
+            {
+                var user = GetById(id);
 
-            _userRepository.Delete(user);
-            _userRepository.SaveChanges();
+                _userRepository.Delete(user);
+                _userRepository.SaveChanges();
+            }
+            catch(ArgumentNullException)
+            {
+                throw new NotFoundException("Id não encontrado");
+            }
 
         }
     }

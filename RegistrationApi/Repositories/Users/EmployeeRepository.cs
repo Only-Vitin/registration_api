@@ -4,8 +4,8 @@ using System.Linq;
 using System.Collections.Generic;
 
 using RegistrationApi.Data;
-using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Entities.Users;
+using RegistrationApi.Interfaces.Users;
 
 namespace RegistrationApi.Repositories.Users
 {

@@ -1,9 +1,8 @@
 using System.Text;
 using System.Net.Http;
 using System.Text.Json;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
+using System.Collections.Generic;
 
 namespace RegistrationApi.Email
 {

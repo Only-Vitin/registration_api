@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistrationApi.Migrations
 {
-    public partial class EditingEntities : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,9 +18,9 @@ namespace RegistrationApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     BarCode = table.Column<long>(type: "bigint", nullable: false),
-                    Name = table.Column<string>(type: "longtext", nullable: false)
+                    Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Brand = table.Column<string>(type: "longtext", nullable: false)
+                    Brand = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<double>(type: "double", nullable: false)
                 },
@@ -64,7 +64,7 @@ namespace RegistrationApi.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UsagePrecautions = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Fragrance = table.Column<string>(type: "longtext", nullable: false)
+                    Fragrance = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -106,7 +106,7 @@ namespace RegistrationApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Allergens = table.Column<string>(type: "longtext", nullable: false)
+                    Allergens = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ExpirationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },

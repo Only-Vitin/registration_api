@@ -1,8 +1,8 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using RegistrationApi.Interfaces.Users;
 using RegistrationApi.Entities.Users;
+using RegistrationApi.Interfaces.Users;
 
 namespace RegistrationApi.Services.Users
 {

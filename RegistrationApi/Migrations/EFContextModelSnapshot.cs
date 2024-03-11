@@ -27,11 +27,9 @@ namespace RegistrationApi.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Brand")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<double>("Price")
@@ -96,7 +94,6 @@ namespace RegistrationApi.Migrations
                     b.HasBaseType("RegistrationApi.Entities.Products.Product");
 
                     b.Property<string>("Fragrance")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Surface")
@@ -126,7 +123,6 @@ namespace RegistrationApi.Migrations
                     b.HasBaseType("RegistrationApi.Entities.Products.Product");
 
                     b.Property<string>("Allergens")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("ExpirationDate")

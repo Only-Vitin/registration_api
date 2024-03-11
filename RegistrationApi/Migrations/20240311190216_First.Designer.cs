@@ -9,8 +9,8 @@ using RegistrationApi.Data;
 namespace RegistrationApi.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20240229200445_EditingEntities")]
-    partial class EditingEntities
+    [Migration("20240311190216_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,11 +29,9 @@ namespace RegistrationApi.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Brand")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<double>("Price")
@@ -98,7 +96,6 @@ namespace RegistrationApi.Migrations
                     b.HasBaseType("RegistrationApi.Entities.Products.Product");
 
                     b.Property<string>("Fragrance")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Surface")
@@ -128,7 +125,6 @@ namespace RegistrationApi.Migrations
                     b.HasBaseType("RegistrationApi.Entities.Products.Product");
 
                     b.Property<string>("Allergens")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("ExpirationDate")

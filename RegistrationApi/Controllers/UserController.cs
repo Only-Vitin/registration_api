@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using RegistrationApi.Dto;
 using RegistrationApi.Entities.Users;
 using RegistrationApi.Services.Users;
+using RegistrationApi.Services.Exceptions;
 
 namespace RegistrationApi.Controllers
 {
@@ -56,36 +58,55 @@ namespace RegistrationApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] UserDto userDto)
         {
-            var user = UserFactory.Create(userDto);
-            if(user == null)
+            try
             {
-                ResponseMessageDto messageDto = new("Verifique os campos específicos/fields");
-                return BadRequest(messageDto);
-            }
+                var user = UserFactory.Create(userDto);
+                if(user == null)
+                {
+                    return BadRequest(new ResponseMessageDto("Verifique os campos específicos/fields"));
+                }
 
-            User createdUser = await Task.Run(() => _userService.Post(user));
-            return StatusCode(StatusCodes.Status201Created, createdUser);
+                User createdUser = await Task.Run(() => _userService.Post(user));
+                return StatusCode(StatusCodes.Status201Created, createdUser);
+            }
+            catch(HttpRequestException ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpPut("{userId}")]
         public IActionResult Put(int userId, [FromBody] UserDto userDto)
         {
-            var updatedUser = UserFactory.Create(userDto);
-            if(updatedUser == null)
+            try
             {
-                ResponseMessageDto messageDto = new("Verifique o tipo do usuário");
-                return BadRequest(messageDto);
-            }
+                var updatedUser = UserFactory.Create(userDto);
+                if(updatedUser == null)
+                {
+                    return BadRequest(new ResponseMessageDto("Verifique o tipo do usuário"));
+                }
 
-            _userService.Put(updatedUser, userId);
-            return NoContent();
+                _userService.Put(updatedUser, userId);
+                return NoContent();
+            }
+            catch(NotFoundException ex)
+            {
+                return NotFound(new ResponseMessageDto(ex.Message));
+            }
         }
 
         [HttpDelete("{userId}")]
         public IActionResult Delete(int userId)
         {
-            _userService.Delete(userId);
-            return NoContent();
+            try
+            {
+                _userService.Delete(userId);
+                return NoContent();
+            }
+            catch(NotFoundException ex)
+            {
+                return NotFound(new ResponseMessageDto(ex.Message));
+            }
         }
     }
 }
