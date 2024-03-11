@@ -28,22 +28,43 @@ namespace RegistrationApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var users = _userService.Get();
-            return Ok(users);
+            try
+            {
+                var users = _userService.Get();
+                return Ok(users);
+            }
+            catch(NotFoundException ex)
+            {
+                return NotFound(new ResponseMessageDto(ex.Message));
+            }
         }
 
         [HttpGet("customer")]
         public IActionResult GetCustomers()
         {
-            var users = _customerService.Get();
-            return Ok(users);
+            try
+            {
+                var users = _customerService.Get();
+                return Ok(users);
+            }
+            catch(NotFoundException ex)
+            {
+                return NotFound(new ResponseMessageDto(ex.Message));
+            }
         }
 
         [HttpGet("employee")]
         public IActionResult GetEmployees()
         {
-            var users = _employeeService.Get();
-            return Ok(users);
+            try
+            {
+                var users = _employeeService.Get();
+                return Ok(users);
+            }
+            catch(NotFoundException ex)
+            {
+                return NotFound(new ResponseMessageDto(ex.Message));
+            }
         }
 
         [HttpGet("{userId}")]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using RegistrationApi.Entities.Users;
 using RegistrationApi.Interfaces.Users;
+using RegistrationApi.Services.Exceptions;
 
 namespace RegistrationApi.Services.Users
 {
@@ -17,7 +18,10 @@ namespace RegistrationApi.Services.Users
 
         public IEnumerable<Customer> Get()
         {
-            return _customerRepository.GetAll().ToList();
+            var customers = _customerRepository.GetAll().ToList();
+            if(customers.Count == 0) throw new NotFoundException("Nenhum cliente encontrado");
+
+            return customers;
         }
     }
 }

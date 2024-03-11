@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using RegistrationApi.Entities.Users;
 using RegistrationApi.Interfaces.Users;
+using RegistrationApi.Services.Exceptions;
 
 namespace RegistrationApi.Services.Users
 {
@@ -17,7 +18,10 @@ namespace RegistrationApi.Services.Users
 
         public IEnumerable<Employee> Get()
         {
-            return _employeeRepository.GetAll().ToList();
+            var employees = _employeeRepository.GetAll().ToList();
+            if(employees.Count == 0) throw new NotFoundException("Nenhum funcionário encontrado");
+
+            return employees;
         }
     }
 }

@@ -35,6 +35,7 @@ namespace RegistrationApi.Services.Users
 
             List<object> allUsers = new();
             allUsers = allUsers.Concat(employees).ToList().Concat(customers).ToList();
+            if(allUsers.Count == 0) throw new NotFoundException("Nenhum usuário encontrado");
 
             return allUsers;
         }

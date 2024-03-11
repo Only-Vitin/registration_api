@@ -33,8 +33,6 @@ namespace RegistrationApi.Repositories.Users
         public void Update(Customer updatedCustomer, int id)
         {
             Customer customer = _context.Customer.Where(c => c.Id == id).SingleOrDefault();
-            if(customer == null)
-                throw new ArgumentException("Id não existe");
             _mapper.Map(updatedCustomer, customer);
         }
     }
