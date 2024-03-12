@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+
 using RegistrationApi.Dto;
 
 namespace RegistrationApi.Entities.Products
@@ -21,7 +22,7 @@ namespace RegistrationApi.Entities.Products
                         Brand = productDto.Brand,
                         Price = productDto.Price,
                         Surface = productDto.Fields["surface"],
-                        UsagePrecautions = productDto.Fields["usageprecautions"],
+                        UsagePrecautions = productDto.Fields["usagePrecautions"],
                         Fragrance = productDto.Fields["fragrance"]
                     };
                 }
@@ -33,8 +34,8 @@ namespace RegistrationApi.Entities.Products
                         Name = productDto.Name,
                         Brand = productDto.Brand,
                         Price = productDto.Price,
-                        AlcoholContent = double.Parse(productDto.Fields["alcoholcontent"]),
-                        ExpirationDate = DateTime.Parse(productDto.Fields["expirationdate"])
+                        AlcoholContent = double.Parse(productDto.Fields["alcoholContent"]),
+                        ExpirationDate = DateTime.Parse(productDto.Fields["expirationDate"])
                     };
                 }
                 else if(productDto.Type == 3)
@@ -46,7 +47,7 @@ namespace RegistrationApi.Entities.Products
                         Brand = productDto.Brand,
                         Price = productDto.Price,
                         Allergens = productDto.Fields["allergens"],
-                        ExpirationDate = DateTime.Parse(productDto.Fields["expirationdate"])
+                        ExpirationDate = DateTime.Parse(productDto.Fields["expirationDate"])
                     };
                 }
                 return null;

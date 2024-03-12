@@ -34,7 +34,7 @@ namespace RegistrationApi.Services.Users
             var customers = _customerRepository.GetAll().ToList();
 
             List<object> allUsers = new();
-            allUsers = allUsers.Concat(employees).ToList().Concat(customers).ToList();
+            allUsers = allUsers.Concat(employees).Concat(customers).ToList();
             if(allUsers.Count == 0) throw new NotFoundException("Nenhum usuário encontrado");
 
             return allUsers;
@@ -94,7 +94,6 @@ namespace RegistrationApi.Services.Users
             {
                 throw new NotFoundException("Id não encontrado");
             }
-
         }
     }
 }

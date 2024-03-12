@@ -44,8 +44,8 @@ namespace RegistrationApi.Controllers
         {
             try
             {
-                var users = _customerService.Get();
-                return Ok(users);
+                var customers = _customerService.Get();
+                return Ok(customers);
             }
             catch(NotFoundException ex)
             {
@@ -58,8 +58,8 @@ namespace RegistrationApi.Controllers
         {
             try
             {
-                var users = _employeeService.Get();
-                return Ok(users);
+                var employees = _employeeService.Get();
+                return Ok(employees);
             }
             catch(NotFoundException ex)
             {
